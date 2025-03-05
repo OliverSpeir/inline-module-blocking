@@ -3,14 +3,26 @@
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Inline Module Script</h1>
+    <p style="max-width: 600px;">
+      An inline type module script will use a busy-wait loop to block the main
+      thread for 3 seconds before changing this paragraph's color to green. If
+      the paragraph is already green when the page loads, the script blocked
+      rendering.
+    </p>
+    <a href="/external">External Module Page</a>
+    <script>
+      const start = performance.now();
+      while (performance.now() - start < 3000) {}
+      document.querySelector("p")!.style.backgroundColor = "#9af5b0";
+    </script>
+  </body>
 </html>
